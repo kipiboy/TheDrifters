@@ -1,0 +1,51 @@
+
+=========================================================================================================================
+
+Phase 1: Vision & Foundation
+
+The Concept: CoCo, I'm starting a hackathon project called RAIE. We need to solve the 'one-size-fits-all' problem in fashion retail where generic assortments lead to massive stockouts and lost sales. Can you help me design a Snowflake star schema that incorporates regional body profiles—like height, obesity indices, and foot dimensions—to optimize SKU distribution?
+
+DDL Generation: Let’s build the foundation. Write the DDL for five tables: DIM_REGION, DIM_STORES, DIM_PRODUCT (must include size and width for footwear), DIM_BODY_PROFILE, and a FACT_SALES table.
+
+The Intelligence Layer: I need a specific table to store our 'secret sauce': REGION_BODY_PROFILE_DISTRIBUTION. This should map population percentages to biometric profiles per region. Can you create that DDL and ensure it links to our DIM_REGION and DIM_BODY_PROFILE?
+
+Initial Seeding: Let's seed the dimensions with realistic data for 2026. Give me 5 Indian regions, 3 stores across West India, East India and other regions and a product catalog of  bottomwear, topwear, ethnicwear, footwear SKUs ranging from XS to XXXL in both standard and wide widths.
+
+=========================================================================================================================
+
+Phase 2: Data Synthesis & Regional Bias
+
+Synthesizing Demographics: Let's use your generative power to populate REGION_BODY_PROFILE_DISTRIBUTION. I need percentages for various body types, but make sure they are realistic. For instance, I want to see a higher concentration of larger/wide profiles in the Southern region.
+
+Introducing the 'Flaw': To show the judges the current problem, generate 10,000 rows of FACT_SALES where the sales are perfectly even across all sizes for every store. This will represent the inefficient 'generic' approach we are trying to fix
+
+Purposeful Outliers: Now, let's introduce 'Regional DNA.' Modify the sales and inventory data so that Store S3 in Central India shows a 100% stockout rate for XXL sizes, while simultaneously having 500 units of XS sitting as dead inventory.
+
+=========================================================================================================================
+Phase 3: Streamlit & Visualization
+
+Basic setup:
+
+We need a streamlit application dashboard called "Retail Assortment Engine" that should have 3 tabs
+1st tab called current_data that should have basic filter like, region,store,category, date_range and the chart should tell us about the sales figure based on store and bifurcated by gender
+
+2nd tab called future_predictions(similar to 1st tab but with predictions data)
+
+3rd tab called Insights that will display the future demand ratio( for eg. if I enter a number 100 for "clothes space available in a store" filter then based on body_profile of that region it should tell us the numbers of clothes that can be planned to store in that store based on gender and size: for ex -> [1. Men,S,10] ,[2. Men,M,20],[3. Men,XL,10],[4. Men,L,10] [5. Female,S,10],[6. Female,M,20],[6. Female,L,20]...so total of 100 is assorted based on the algorithm you will provide
+
+Additional setups:
+
+Okay some key feedbacks, the small tiles which demonstrate the metrics like Dominant Gender, Total Units sold are being looking a bit squeezed. Especially when the filters bar is on, the tiles looked squeezed, so make it flexible and provide some space to make the data look visible enough. Also in dominant gender Male/Female, try using the Male symbol and the female symbol if possible else let it be .
+
+In the 2nd tab, lets have a different colour Male/Female bifurcation instead of light blue/dark blue in Predicted Demand Ratio by Size graph. Also try to have gender bifurcation in Model Confidence Score by Size graph also. If not possible, let me know.
+
+Also im getting this error in the 2nd tab, TypeError: DataFrameSelectorMixin.dataframe() got an unexpected keyword argument 'hide_index'. Could you fix that as well.
+
+In the 3rd tab, the tiles are looking fine but again im getting some error 
+TypeError: DataFrameSelectorMixin.dataframe() got an unexpected keyword argument 'hide_index'
+
+In the 4th tab, again im getting the same error, TypeError: DataFrameSelectorMixin.dataframe() got an unexpected keyword argument 'hide_index'
+
+
+
+
